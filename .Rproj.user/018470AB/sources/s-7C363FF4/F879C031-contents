@@ -1,0 +1,58 @@
+coviddeaths<-read.csv("data/ScotlandCovidDeaths.csv")
+
+library(sf)
+IZ<-read_sf("boundaries/IZ/SG_IntermediateZone_Bdry_2011.shp")
+
+IZcoviddeaths<-merge(IZ, coviddeaths, by.x="InterZone", by.y="Intermediate.Zone.code")
+st_crs(IZcoviddeaths)
+
+library(tmap)
+
+Scotlandmap<-tm_shape(IZcoviddeaths) + 
+  tm_fill("rate.per.100.000.population", style = "quantile", palette = "Blues") +
+  tm_borders(alpha = 0.1) +
+  tm_layout(main.title = "COVID deaths per 100,000 pop", main.title.size = 0.7 ,
+            legend.position = c("left", "top"), legend.title.size = 0.8)
+
+lookup<-read.csv("data/IZtoLAlookup.csv")
+IZcoviddeaths<-merge(IZcoviddeaths, lookup, by.x="InterZone", by.y="IntZone")
+IZEDcoviddeaths<-subset(IZcoviddeaths, CAName!="Dumfries and Galloway")
+
+tmap_mode("view")
+Edinburghmap<-tm_shape(IZEDcoviddeaths) + 
+  tm_fill("rate.per.100.000.population", style = "quantile", palette = "Blues") +
+  tm_borders(alpha = 0.1) +
+  tm_layout(main.title = "COVID deaths per 100,000 pop", main.title.size = 0.7 ,
+            legend.position = c("right", "bottom"), legend.title.size = 0.8)
+
+### convert to sp object
+library(sp)
+library(spdep)
+IZEDcoviddeathssp <- as(IZEDcoviddeaths, "Spatial")
+w <- poly2nb(IZEDcoviddeathssp, row.names=IZEDcoviddeathssp$InterZone)
+
+plot(IZEDcoviddeathssp, col='gray', border='blue', lwd=2)
+#Then we use the coordinates function to obtain the coordinates of the polygon centroids
+xy <- coordinates(IZEDcoviddeathssp)
+#Then we draw lines between the polygons centroids for neighbours that are listed as linked in w
+plot(w, xy, col='red', lwd=2, add=TRUE)
+
+
+wm <- nb2mat(w, style='B')
+wm
+
+wm_rs <- nb2mat(w, style='W')
+wm_rs
+
+ww <-  nb2listw(w, style='B')
+ww
+
+moran(IZEDcoviddeathssp$rate.per.100.000.population, ww, n=length(ww$neighbours), S0=Szero(ww))
+
+
+
+
+
+
+
+

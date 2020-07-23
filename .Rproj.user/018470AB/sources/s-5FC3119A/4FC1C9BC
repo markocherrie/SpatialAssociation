@@ -1,0 +1,24 @@
+{
+    "id": "4FC1C9BC",
+    "path": "C:/Users/mark.cherrie/Box/projects/epicourse/clustering/coviddeaths_2020.R",
+    "project_path": "coviddeaths_2020.R",
+    "type": "r_source",
+    "hash": "4043993233",
+    "contents": "",
+    "dirty": false,
+    "created": 1595540307498.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "cursorPosition": "17,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1595540532,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1595540532540,
+    "read_only": false,
+    "read_only_alternatives": []
+}

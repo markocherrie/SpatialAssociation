@@ -1,0 +1,24 @@
+{
+    "id": "F879C031",
+    "path": "C:/Users/mark.cherrie/Box/projects/epicourse/clustering/gather.R",
+    "project_path": "gather.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1594974705878.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "cursorPosition": "58,0",
+        "scrollLine": "13"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1594976328,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1594976328308,
+    "read_only": false,
+    "read_only_alternatives": []
+}

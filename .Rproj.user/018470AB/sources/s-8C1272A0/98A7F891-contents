@@ -1,0 +1,15 @@
+coviddeaths<-read.csv("data/ScotlandCovidDeaths.csv")
+
+library(sf)
+IZ<-read_sf("boundaries/IZ/SG_IntermediateZone_Bdry_2011.shp")
+
+IZcoviddeaths<-merge(IZ, coviddeaths, by.x="InterZone", by.y="Intermediate.Zone.code")
+st_crs(IZcoviddeaths)
+
+library(tmap)
+
+tm_shape(IZcoviddeaths) + 
+  tm_fill("rate.per.100.000.population", style = "quantile", palette = "Blues") +
+  tm_borders(alpha = 0.1) +
+  tm_layout(main.title = "COVID deaths per 100,000 pop", main.title.size = 0.7 ,
+            legend.position = c("left", "top"), legend.title.size = 0.8)
