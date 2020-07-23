@@ -3,7 +3,7 @@
     "path": "C:/Users/mark.cherrie/Box/projects/epicourse/clustering/alldeaths_2016.R",
     "project_path": "alldeaths_2016.R",
     "type": "r_source",
-    "hash": "162435277",
+    "hash": "1898829310",
     "contents": "",
     "dirty": false,
     "created": 1595506532483.0,
@@ -11,15 +11,15 @@
     "relative_order": 3,
     "properties": {
         "tempName": "Untitled1",
-        "cursorPosition": "39,52",
+        "cursorPosition": "32,45",
         "scrollLine": "27"
     },
     "folds": "",
-    "lastKnownWriteTime": 1595541751,
+    "lastKnownWriteTime": 1595542786,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1595541751416,
+    "last_content_update": 1595542786705,
     "read_only": false,
     "read_only_alternatives": []
 }

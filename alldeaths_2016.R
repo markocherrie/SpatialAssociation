@@ -30,17 +30,13 @@ tmap_dzsimd
 tmap_mode("view")
 tmap_dzsimd
 
-################### Construct Neighbours List From Polygon List
-
-### convert to sp object 
+# construct neighbours list from polygon list
 library(sp)
 library(spdep)
+# convert to sp object 
 dzsimd_sp <- as(dzsimd, "Spatial")
-# construct neighbours list from polygon list
 w <- poly2nb(dzsimd_sp, row.names=dzsimd_sp$DataZone)
 summary(w)
-
-############# snapping #################
 
 # Plot the boundaries
 plot(dzsimd_sp, col='white', border='gray', lwd=2)
@@ -51,7 +47,7 @@ xy <- coordinates(dzsimd_sp)
 plot(w, xy, col='red', lwd=2, add=TRUE)
 
 
-############################################
+############### STEP 2: CLUSTER PROCESSING
 
 # listw type spatial weights object
 ww <-  nb2listw(w, style='B')
@@ -84,6 +80,8 @@ dzsimd$lag_s_SMR <- lag.listw(ww, dzsimd$s_SMR)
 x <- dzsimd$s_SMR
 y <- dzsimd$lag_s_SMR 
 xx <- tibble::data_frame(x,y)
+
+############### STEP 3: CLUSTER RESULTS
 
 # Identify significant clusters
 dzsimdsp <- st_as_sf(dzsimd) %>% 
