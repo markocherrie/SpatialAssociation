@@ -1,9 +1,0 @@
-
-
-dz<-dz %>%
-  group_by(IZcode) %>%
-  mutate(meanSMR=mean(SMR, na.rm=T)) 
-
-IZ<-read_sf("boundaries/IZ/SG_IntermediateZone_Bdry_2011.shp")
-
-
