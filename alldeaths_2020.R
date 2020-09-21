@@ -66,14 +66,12 @@ dzsimdmc_results <- moran.mc(dzsimd$SMR, ww, nsim=1000)
 dzsimdmc_results
 plot(dzsimdmc_results, main="", las=1)
 
-
 # we need a weights matrix for this
 wm <- nb2mat(w, style='B')
 # row standardisation of weights matrix
 rwm <- mat2listw(wm, style='W')
 mat <- listw2mat(rwm)
 moran.plot(dzsimd$SMR, rwm, las=1)
-
 
 # Decomposition of global indicators
 locm_dzsimd <- localmoran(dzsimd$SMR, ww)
