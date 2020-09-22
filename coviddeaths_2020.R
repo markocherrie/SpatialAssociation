@@ -1,6 +1,6 @@
 ############### STEP 1: PRE_PROCESSING
 
-# load all the packages required
+# load most the packages required
 load.lib<-c("sf", "dplyr", "pscl", "ggplot2", 
             "spdep", "lctools", "stars", "mapview", "leafsync")
 install.lib<-load.lib[!load.lib %in% installed.packages()]
@@ -113,7 +113,7 @@ return(df)
 }
 naivecoefs<-outputcoefs(terms, coefs, "Std. Error", "scalednb")
 
-############### STEP 3: IZcoviddeaths_ap_simd SPATIAL AUTOCORRELATION
+############### STEP 3: TEST SPATIAL AUTOCORRELATION
 
 # get the residuals from the first model so we can IZcoviddeaths_ap_simd the spatial autocorrelation
 IZcoviddeaths_ap_simd$residuals<- residuals(nb)
@@ -189,10 +189,7 @@ ggplot(allcoefs, aes(x = modelname, y = IRR, color=terms)) +
                 geom_hline(yintercept = 1,
                            linetype="dashed")
 
-
-
 ############### STEP 6: RESULTS INTERPRETATION
-
 
 # RESEARCH Q1
 # Is there an effect of existing inequalities on risk of covid death?
@@ -229,14 +226,6 @@ summary(syndemicairpolresult)
 terms <- c('scale(SMR):scale(no2)')
 coefs <- as.data.frame(summary(syndemicairpolresult)$beta_table)
 syndemicairpolcoefs<-outputcoefs(terms, coefs, "Cond. SE", "syndemicairpol")
-
-
-
-
-terms <- c('scale(SMR)')
-coefs <- as.data.frame(summary(syndemicairpolresult)$beta_table)
-syndemicairpolcoefs2<-outputcoefs(terms, coefs, "Cond. SE", "syndemicairpol")
-
 
 
 
