@@ -1,12 +1,5 @@
 ############### STEP 1: PRE_PROCESSING
 
-# load most the packages required
-load.lib<-c("sf", "dplyr", "pscl", "ggplot2", 
-            "spdep", "lctools", "stars", "mapview", "leafsync")
-install.lib<-load.lib[!load.lib %in% installed.packages()]
-for(lib in install.lib) install.packages(lib,dependencies=TRUE)
-sapply(load.lib,require,character=TRUE)
-
 ### Read in the data
 # Old data
 #coviddeaths<-read.csv("data/ScotlandCovidDeaths.csv")
