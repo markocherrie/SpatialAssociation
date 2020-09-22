@@ -55,7 +55,7 @@ dztoiz_simd<-simd %>%
   # apply the cleaning function to the variables
   mutate_at(c("Income_rate", "SMR", "Total_population"), removespecial) %>%
   # select only the data we need
-  select(Data_Zone, SMR, Income_rate, Total_population)%>%
+  dplyr::select(Data_Zone, SMR, Income_rate, Total_population)%>%
   # join with the lookup table
   left_join(., dztoiz, by=c("Data_Zone" = "DZ")) %>%
   # group by IZ
