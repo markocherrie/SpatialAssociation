@@ -35,6 +35,7 @@ no2_sf<-no2_sf[IZ,]
 library(stars)
 no2_rst<-st_rasterize(no2_sf, dx = 1000, dy = 1000) 
 plot(no2_sf)
+plot(no2_rst)
 #devtools::install_github("michaeldorman/geobgu")
 library(geobgu)
 add<-as.data.frame(raster_extract(no2_rst, IZcoviddeaths, fun = mean, na.rm = TRUE))
